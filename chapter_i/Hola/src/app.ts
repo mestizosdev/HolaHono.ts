@@ -14,7 +14,9 @@ app.use('*', logger())
 app.route('/', ping)
 app.route('/', greet)
 
+const port = process.env.PORT || 3001
+
 export default {
-    port: 3000,
-    fetch: app.fetch,
-  }
+  port,
+  fetch: app.fetch,
+}

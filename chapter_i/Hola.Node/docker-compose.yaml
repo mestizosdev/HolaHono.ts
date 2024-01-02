@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    image: hono-hello
+    container_name: hello
+    network_mode: bridge
+    ports:
+#     - localPort:containerPort
+      - "3000:3000"
+    environment:
+      # DB_HOST: 'host.docker.internal'
+      # DB_USER: 'hola'
+      # DB_PASSWORD: 'h'
+      # DB_PORT: '3306'
+      # DB_NAME: 'hola'
+      DATABASE_URL: 'mariadb://hola:h@host.docker.internal:3306/hola'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
